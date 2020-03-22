@@ -94,11 +94,15 @@ class GoturnDataloader(Dataset):
         self._targets = []
         self._bboxes = []
 
+        count = 0
         for i, batch_i in enumerate(batch):
             for i, (img_prev, bbox_prev, img_cur, bbox_cur) in enumerate(batch_i):
+                if count == 5:
+                    break
                 self._sample_gen.reset(bbox_cur, bbox_prev, img_cur,
                                        img_prev)
                 self.__make_training_samples()
+                count = count + 1
 
         num_prev_batch = len(self._images_p)
         num_curr_batch = self._batchSize - num_prev_batch
@@ -186,7 +190,7 @@ if __name__ == "__main__":
                                  images_p=manager.list(),
                                  targets_p=manager.list(),
                                  bboxes_p=manager.list(),
-                                 isTrain=True, dbg=False)
+                                 isTrain=True, dbg=True)
 
     dataloader = DataLoader(objGoturn, batch_size=3, shuffle=True,
                             num_workers=6, collate_fn=objGoturn.collate)

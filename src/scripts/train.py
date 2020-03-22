@@ -290,12 +290,8 @@ class GoturnTrain(LightningModule):
         @batch_idx: current batch index
         """
         curr, prev, gt_bb = batch
-        # curr, prev, gt_bb = read_images_dbg(batch_idx)
         pred_bb = self.forward(prev, curr)
         loss = torch.nn.L1Loss(size_average=False)(pred_bb.float(), gt_bb.float())
-
-        # with open('loss.txt', 'a') as f:
-        # f.write('loss at {}: {}\n'.format(batch_idx + 1, loss))
 
         if self.trainer.use_dp:
             loss = loss.unsqueeze(0)
@@ -438,9 +434,10 @@ def read_images_dbg(idx):
 def main(hparams):
     hparams = get_args()
     model = GoturnTrain(hparams, dbg=True)
-    resume_from_ckpt = './caffenet-dbg-2/lightning_logs/version_0/checkpoints/epoch=2.ckpt'
+    # resume_from_ckpt = './caffenet-dbg-2/lightning_logs/version_0/checkpoints/epoch=2.ckpt'
+    resume_from_ckpt = None
     trainer = Trainer(default_save_path=hparams.save_path,
-                      gpus=[1, ], min_nb_epochs=hparams.epochs,
+                      gpus=[0, ], min_nb_epochs=hparams.epochs,
                       accumulate_grad_batches=1,
                       train_percent_check=1,
                       resume_from_checkpoint=resume_from_ckpt,
