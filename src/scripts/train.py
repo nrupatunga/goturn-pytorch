@@ -10,6 +10,7 @@ import argparse
 import random
 import sys
 from collections import OrderedDict
+from multiprocessing import Manager
 
 import cv2
 import numpy as np
@@ -21,7 +22,6 @@ from pytorch_lightning import Trainer
 from pytorch_lightning.core.lightning import LightningModule
 from torch.utils.data import DataLoader
 from torch_lr_finder import LRFinder
-from multiprocessing import Manager
 
 try:
     from goturn.dataloaders.goturndataloader import GoturnDataloader

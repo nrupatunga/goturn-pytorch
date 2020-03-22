@@ -6,8 +6,9 @@ Github: https://github.com/nrupatunga
 Description: goturn dataloader
 """
 
-import sys
 import math
+import sys
+from multiprocessing import Manager
 from pathlib import Path
 
 import numpy as np
@@ -15,7 +16,6 @@ import torch
 from loguru import logger
 from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
-from multiprocessing import Manager
 
 try:
     from goturn.dataloaders.alov import AlovDataset
