@@ -144,11 +144,14 @@ class GoturnTrain(LightningModule):
     def configure_optimizers(self):
         """Configure optimizers"""
         logger.info('Configuring optimizer: SGD with lr = {}, momentum = {}'.format(self.hparams.lr, self.hparams.momentum))
-        optimizer = torch.optim.Adam(self._model.parameters(), 3e-4, weight_decay=eval(self.config['weight_decay']))
-
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=len(train_loader), eta_min=0,
-                                                               last_epoch=-1)
-
+        params = self.__set_lr()
+        optimizer = CaffeSGD(params,
+                             lr=self.hparams.lr,
+                             momentum=self.hparams.momentum,
+                             weight_decay=self.hparams.wd)
+        scheduler = torch.optim.lr_scheduler.StepLR(optimizer,
+                                                    step_size=self.hparams.lr_step,
+                                                    gamma=self.hparams.gamma)
         return [optimizer], [scheduler]
 
     @pl.data_loader
