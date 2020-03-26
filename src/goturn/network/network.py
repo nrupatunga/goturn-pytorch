@@ -27,7 +27,7 @@ class GoturnNetwork(nn.Module):
     """AlexNet based network for training goturn tracker"""
 
     def __init__(self, pretrained_model=None,
-                 init_fc='/home/nthere/2020/pytorch-goturn/src/scripts/fc_init.npy', num_output=4):
+                 init_fc=None, num_output=4):
         """ """
         super(GoturnNetwork, self).__init__()
 

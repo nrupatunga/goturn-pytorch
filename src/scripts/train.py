@@ -19,6 +19,7 @@ import torch
 import torch.backends.cudnn as cudnn
 from loguru import logger
 from pytorch_lightning import Trainer
+from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning.core.lightning import LightningModule
 from torch.utils.data import DataLoader
 from torch_lr_finder import LRFinder
@@ -52,7 +53,7 @@ class GoturnTrain(LightningModule):
 
         super(GoturnTrain, self).__init__()
 
-        # self.__set_seed(hparams.seed)
+        self.__set_seed(hparams.seed)
         self.hparams = hparams
         logger.info('Setting up the network...')
 
@@ -70,25 +71,14 @@ class GoturnTrain(LightningModule):
             param.requires_grad = False
 
     def _set_conv_layer(self, conv_layers, param_dict):
-        conv_layer_num = 0
         for layer in conv_layers.modules():
             if type(layer) == torch.nn.modules.conv.Conv2d:
-                # conv_layer_num += 1
-                if conv_layer_num == 5:
-                    param_dict.append({'params': layer.weight,
-                                       'lr': 1,
-                                       'weight_decay': self.hparams.wd})
-                    param_dict.append({'params': layer.bias,
-                                       'lr': 1,
-                                       'weight_decay': 0})
-                else:
-                    param_dict.append({'params': layer.weight,
-                                       'lr': 0,
-                                       'weight_decay': self.hparams.wd})
-                    param_dict.append({'params': layer.bias,
-                                       'lr': 0,
-                                       'weight_decay': 0})
-
+                param_dict.append({'params': layer.weight,
+                                   'lr': 0,
+                                   'weight_decay': self.hparams.wd})
+                param_dict.append({'params': layer.bias,
+                                   'lr': 0,
+                                   'weight_decay': 0})
         return param_dict
 
     def __set_lr(self):
@@ -109,27 +99,6 @@ class GoturnTrain(LightningModule):
                     param_dict.append({'params': layer.bias,
                                        'lr': 20 * self.hparams.lr,
                                        'weight_decay': 0})
-
-        if 0:
-            regression_layer = self._model._classifier
-            for layer in regression_layer.modules():
-                if type(layer) == torch.nn.modules.linear.Linear:
-                    param_dict.append({'params': layer.weight,
-                                       'lr': 10 * self.hparams.lr,
-                                       'weight_decay': self.hparams.wd})
-                    param_dict.append({'params': layer.bias,
-                                       'lr': 20 * self.hparams.lr,
-                                       'weight_decay': 0})
-        if 0:
-            param_dict = [{'params': regression_layer[0].weight, 'lr': 10 * self.hparams.lr, 'weight_decay': self.hparams.wd},
-                          {'params': regression_layer[3].weight, 'lr': 10 * self.hparams.lr, 'weight_decay': self.hparams.wd},
-                          {'params': regression_layer[6].weight, 'lr': 10 * self.hparams.lr, 'weight_decay': self.hparams.wd},
-                          {'params': regression_layer[9].weight, 'lr': 10 * self.hparams.lr, 'weight_decay': self.hparams.wd},
-                          {'params': regression_layer[0].bias, 'lr': 20 * self.hparams.lr, 'weight_decay': 0},
-                          {'params': regression_layer[3].bias, 'lr': 20 * self.hparams.lr, 'weight_decay': 0},
-                          {'params': regression_layer[6].bias, 'lr': 20 * self.hparams.lr, 'weight_decay': 0},
-                          {'params': regression_layer[9].bias, 'lr': 20 * self.hparams.lr, 'weight_decay': 0}]
-
         return param_dict
 
     def find_lr(self):
@@ -138,16 +107,10 @@ class GoturnTrain(LightningModule):
         params = self.__set_lr()
 
         criterion = torch.nn.L1Loss(size_average=False)
-        if 0:
-            optimizer = torch.optim.SGD(params,
-                                        lr=1e-8,
-                                        momentum=self.hparams.momentum,
-                                        weight_decay=self.hparams.wd)
-        else:
-            optimizer = CaffeSGD(params,
-                                 lr=1e-8,
-                                 momentum=self.hparams.momentum,
-                                 weight_decay=self.hparams.wd)
+        optimizer = CaffeSGD(params,
+                             lr=1e-8,
+                             momentum=self.hparams.momentum,
+                             weight_decay=self.hparams.wd)
 
         lr_finder = LRFinder(model, optimizer, criterion, device="cuda")
         trainloader = self.train_dataloader()
@@ -168,9 +131,11 @@ class GoturnTrain(LightningModule):
         ''' These are specific parameters for the sample generator '''
         ap = argparse.ArgumentParser(parents=[parent_parser])
 
-        ap.add_argument('--min_scale', type=float, default=-0.4,
+        ap.add_argument('--min_scale', type=float,
+                        default=-0.40000000000000002,
                         help='min scale')
-        ap.add_argument('--max_scale', type=float, default=0.4,
+        ap.add_argument('--max_scale', type=float,
+                        default=0.40000000000000002,
                         help='max scale')
         ap.add_argument('--lamda_shift', type=float, default=5)
         ap.add_argument('--lamda_scale', type=int, default=15)
@@ -179,20 +144,10 @@ class GoturnTrain(LightningModule):
     def configure_optimizers(self):
         """Configure optimizers"""
         logger.info('Configuring optimizer: SGD with lr = {}, momentum = {}'.format(self.hparams.lr, self.hparams.momentum))
-        params = self.__set_lr()
+        optimizer = torch.optim.Adam(self._model.parameters(), 3e-4, weight_decay=eval(self.config['weight_decay']))
 
-        if 0:
-            optimizer = torch.optim.SGD(params,
-                                        lr=self.hparams.lr,
-                                        momentum=self.hparams.momentum,
-                                        weight_decay=self.hparams.wd)
-        else:
-            optimizer = CaffeSGD(params,
-                                 lr=self.hparams.lr,
-                                 momentum=self.hparams.momentum,
-                                 weight_decay=self.hparams.wd)
-
-        scheduler = torch.optim.lr_scheduler.StepLR(optimizer, step_size=self.hparams.lr_step, gamma=self.hparams.gamma)
+        scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=len(train_loader), eta_min=0,
+                                                               last_epoch=-1)
 
         return [optimizer], [scheduler]
 
@@ -380,7 +335,7 @@ def get_args():
                     type=int, help='number of images per batch')
 
     # Optimizer settings
-    ap.add_argument('--lr', default=8e-7, type=float,
+    ap.add_argument('--lr', default=1e-6, type=float,
                     help='initial learning rate', dest='lr')
     ap.add_argument('--momentum', default=0.9, type=float, help='momentum')
     ap.add_argument('--wd', default=5e-4, type=float, help='weight decay (default: 5e-4)',
@@ -434,15 +389,16 @@ def read_images_dbg(idx):
 def main(hparams):
     hparams = get_args()
     model = GoturnTrain(hparams, dbg=True)
-    # resume_from_ckpt = './caffenet-dbg-2/lightning_logs/version_0/checkpoints/epoch=2.ckpt'
-    resume_from_ckpt = None
+    ckpt_resume_path = './caffenet-dbg-2/_ckpt_epoch_1.ckpt'
+    ckpt_cb = ModelCheckpoint(filepath=hparams.save_path, save_top_k=-1,
+                              save_weights_only=False)
     trainer = Trainer(default_save_path=hparams.save_path,
                       gpus=[0, ], min_nb_epochs=hparams.epochs,
                       accumulate_grad_batches=1,
                       train_percent_check=1,
-                      resume_from_checkpoint=resume_from_ckpt,
+                      resume_from_checkpoint=ckpt_resume_path,
+                      checkpoint_callback=ckpt_cb,
                       val_percent_check=1, profiler=True)
-    # model.find_lr()
     trainer.fit(model)
 
 

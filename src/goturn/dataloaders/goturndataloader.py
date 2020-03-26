@@ -75,7 +75,7 @@ class GoturnDataloader(Dataset):
 
     def __len__(self):
         ''' length of the total dataset, is max of one of the dataset '''
-        return int((self._maxDataLen + self._minDataLen) * 1.5)
+        return int((self._maxDataLen + self._minDataLen) * 1.25)
 
     def __getitem__(self, idx):
         """Get the current idx data
@@ -190,7 +190,7 @@ if __name__ == "__main__":
                                  images_p=manager.list(),
                                  targets_p=manager.list(),
                                  bboxes_p=manager.list(),
-                                 isTrain=True, dbg=True)
+                                 isTrain=True, dbg=False)
 
     dataloader = DataLoader(objGoturn, batch_size=3, shuffle=True,
                             num_workers=6, collate_fn=objGoturn.collate)

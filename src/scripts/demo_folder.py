@@ -104,7 +104,6 @@ class GoturnTracker:
         model.freeze()
 
         self._model = model
-        self._mean = np.load(args.mean_file)
         if dbg:
             self._viz = Visualizer()
 
@@ -119,7 +118,6 @@ class GoturnTracker:
             return image
 
         for i in range(0, prev.shape[0]):
-            # _mean = self._mean
             _mean = np.array([104, 117, 123])
             _std = np.ones_like(_mean)
 
@@ -250,8 +248,6 @@ if __name__ == "__main__":
                     required=True, help='path to input folder containing all the frames')
     ap.add_argument('--model_dir',
                     required=True, help='model directory')
-    ap.add_argument('--mean_file', type=str,
-                    required=True, help='imagenet mean file')
 
     args = ap.parse_args()
     objG = GoturnTracker(args, dbg=False)
