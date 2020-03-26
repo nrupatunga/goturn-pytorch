@@ -17,12 +17,13 @@ import numpy as np
 import pytorch_lightning as pl
 import torch
 import torch.backends.cudnn as cudnn
-from loguru import logger
 from pytorch_lightning import Trainer
 from pytorch_lightning.callbacks import ModelCheckpoint
 from pytorch_lightning.core.lightning import LightningModule
 from torch.utils.data import DataLoader
 from torch_lr_finder import LRFinder
+
+from loguru import logger
 
 try:
     from goturn.dataloaders.goturndataloader import GoturnDataloader

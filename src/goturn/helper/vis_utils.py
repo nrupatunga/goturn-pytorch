@@ -6,7 +6,6 @@ Github: https://github.com/nrupatunga
 Description: visualization
 """
 import numpy as np
-
 import visdom
 
 

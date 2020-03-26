@@ -13,9 +13,10 @@ from pathlib import Path
 
 import numpy as np
 import torch
-from loguru import logger
 from torch.utils.data import DataLoader, Dataset
 from tqdm import tqdm
+
+from loguru import logger
 
 try:
     from goturn.dataloaders.alov import AlovDataset

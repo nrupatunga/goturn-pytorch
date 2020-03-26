@@ -19,8 +19,8 @@ import imutils
 import numpy as np
 import torch
 from imutils.video import FileVideoStream
-from loguru import logger
 
+from loguru import logger
 from train import GoturnTrain
 
 try:

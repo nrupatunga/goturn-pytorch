@@ -10,8 +10,9 @@ import sys
 from pathlib import Path
 
 import numpy as np
-from loguru import logger
 from tqdm import tqdm
+
+from loguru import logger
 
 try:
     from goturn.helper.BoundingBox import BoundingBox

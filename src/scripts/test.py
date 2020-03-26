@@ -11,10 +11,10 @@ from pathlib import Path
 
 import cv2
 import numpy as np
-from loguru import logger
 from torch.utils.data import DataLoader
 from tqdm import tqdm
 
+from loguru import logger
 from train import GoturnTrain
 
 try:
