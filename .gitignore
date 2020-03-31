@@ -3,3 +3,5 @@ __pycache__
 tags
 *.ckpt
 lightning_logs
+
+src/goturn/models/pretrained/fc_init.npy
