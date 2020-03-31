@@ -42,18 +42,37 @@ independently through code.
 **Code Setup**
 ```
 # Clone the repository
-git clone https://github.com/nrupatunga/goturn-pytorch
+$ git clone https://github.com/nrupatunga/goturn-pytorch
 
 # install all the required repositories
-cd goturn-pytorch/src
-pip install -r requirements.txt
+$ cd goturn-pytorch/src
+$ pip install -r requirements.txt
 
 # Add current directory to environment
-source settings.sh
+$ source settings.sh
 ```
 
 **Data Download**
 ```
 cd goturn-pytorch/src/scripts
-./download_data.sh /path/to/data/directory
+$ ./download_data.sh /path/to/data/directory
+```
+
+**Training**
+```
+$ cd goturn-pytorch/src/scripts
+
+# Modify the following variables in the script
+# Path to imagenet
+IMAGENET_PATH='/media/nthere/datasets/ISLVRC2014_Det/'
+# Path to alov dataset
+ALOV_PATH='/media/nthere/datasets/ALOV/'
+# save path for models
+SAVE_PATH='./caffenet/'
+
+# open another terminal and run
+$ visdom
+
+# training
+$ bash train.sh
 ```
