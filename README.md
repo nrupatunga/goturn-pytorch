@@ -17,8 +17,6 @@
 
 * [About the Project](#about-the-project)
 * [Getting Started](#getting-started)
-  * [Prerequisites](#prerequisites)
-  * [Installation](#installation)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
