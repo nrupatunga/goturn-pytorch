@@ -3,7 +3,7 @@
 IMAGENET_PATH='/media/nthere/datasets/ISLVRC2014_Det/'
 ALOV_PATH='/media/nthere/datasets/ALOV/'
 MEAN_FILE='../goturn/dataloaders/imagenet.mean.npy'
-SAVE_PATH='./caffenet-dbg-2/'
+SAVE_PATH='./caffenet/'
 PRETRAINED_MODEL_PATH='../goturn/models/pretrained/caffenet_weights.npy'
 
 python train.py \

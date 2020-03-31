@@ -133,10 +133,10 @@ class GoturnTrain(LightningModule):
         ap = argparse.ArgumentParser(parents=[parent_parser])
 
         ap.add_argument('--min_scale', type=float,
-                        default=-0.40000000000000002,
+                        default=-0.4,
                         help='min scale')
         ap.add_argument('--max_scale', type=float,
-                        default=0.40000000000000002,
+                        default=0.4,
                         help='max scale')
         ap.add_argument('--lamda_shift', type=float, default=5)
         ap.add_argument('--lamda_scale', type=int, default=15)
@@ -352,7 +352,7 @@ def get_args():
                     dest='gamma')
 
     # reproducibility
-    ap.add_argument('--seed', type=int, default=800, help='seed value')
+    ap.add_argument('--seed', type=int, default=42, help='seed value')
 
     # save path
     ap.add_argument('--save_path', default=".", type=str, help='path to save output')
@@ -393,14 +393,14 @@ def read_images_dbg(idx):
 def main(hparams):
     hparams = get_args()
     model = GoturnTrain(hparams, dbg=True)
-    ckpt_resume_path = './caffenet-dbg-2/_ckpt_epoch_1.ckpt'
+    # ckpt_resume_path = './caffenet-dbg-2/_ckpt_epoch_1.ckpt'
     ckpt_cb = ModelCheckpoint(filepath=hparams.save_path, save_top_k=-1,
                               save_weights_only=False)
     trainer = Trainer(default_save_path=hparams.save_path,
                       gpus=[0, ], min_nb_epochs=hparams.epochs,
                       accumulate_grad_batches=1,
                       train_percent_check=1,
-                      resume_from_checkpoint=ckpt_resume_path,
+                      # resume_from_checkpoint=ckpt_resume_path,
                       checkpoint_callback=ckpt_cb,
                       val_percent_check=1, profiler=True)
     trainer.fit(model)

@@ -76,7 +76,7 @@ class loadfromfolder:
 
         vid_dir = self._video_dir
         vid_frames = [str(img_path) for img_path in
-                      Path(vid_dir).glob('*.jpg')]
+                      Path(vid_dir).glob('*.png')]
         list_of_frames = sorted(vid_frames)
 
         self._vid_frames = [list_of_frames]

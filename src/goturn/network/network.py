@@ -52,7 +52,7 @@ class GoturnNetwork(nn.Module):
             self._init_fc = init_fc
             self._caffe_fc_init()
         else:
-            logger.info('Not using caffe fc weights')
+            logger.info('Not using caffe fc weights/ manually initialized')
             self.__init_weights()
 
     def forward(self, x1, x2):
