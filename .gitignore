@@ -1,6 +1,5 @@
 __pycache__
 *.pyc
 tags
-*.npy
 *.ckpt
 lightning_logs
