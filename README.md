@@ -1,4 +1,3 @@
----
 <!-- PROJECT LOGO -->
 <p align="center">
   <h3 align="center">PyTorch-GOTURN</h3>
