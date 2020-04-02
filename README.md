@@ -1,6 +1,6 @@
 <!-- PROJECT LOGO -->
 <p align="center">
-  <h3 align="center">PyTorch-GOTURN</h3>
+  <h3 align="center">GOTURN-PyTorch</h3>
 
   <p align="center">
     PyTorch implementation of "Learning to Track at 100 FPS with Deep Regression Networks"
