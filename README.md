@@ -39,6 +39,16 @@ independently through code.
 	- [PyTorch-Lightning](https://github.com/PyTorchLightning/pytorch-lightning)
 	- [Visdom](https://github.com/facebookresearch/visdom)
 
+## Tracking Demo
+
+|1           |  2 |
+|------------------------|-------------------------|
+|![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/face.gif)  | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/surfer.gif) |
+
+|3           |  4 |
+|------------------------|-------------------------|
+|![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/bike.gif)  | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/surfer.gif) |
+
 <!-- GETTING STARTED -->
 ## Getting Started
 
@@ -100,10 +110,4 @@ $ bash demo_foler.sh
 # demo_folder.sh accordingly
 ```
 ---
-
-## Tracking Demo
-
-|1           |  2 | 3 |
-|------------------------|-------------------------|------------------------
-|![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/1.gif)  | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/2.gif) | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/3.gif)
 
