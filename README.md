@@ -85,6 +85,8 @@ SAVE_PATH='./caffenet/'
 
 # open another terminal and run
 $ visdom
+# You can visualize the train/val images, loss curves,
+# simply open https://localhost:8097 in your browser to visualize
 
 # training
 $ bash train.sh
