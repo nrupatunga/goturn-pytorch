@@ -105,5 +105,5 @@ $ bash demo_foler.sh
 
 |1           |  2 | 3 |
 |------------------------|-------------------------|------------------------
-|![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/1.gif)  | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/2.gif) | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/3.mp4)
+|![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/1.gif)  | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/2.gif) | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/3.gif)
 
