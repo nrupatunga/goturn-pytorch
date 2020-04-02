@@ -47,7 +47,7 @@ independently through code.
 
 |3           |  4 |
 |------------------------|-------------------------|
-|![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/bike.gif)  | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/surfer.gif) |
+|![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/bike.gif)  | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/bear.gif) |
 
 <!-- GETTING STARTED -->
 ## Getting Started
