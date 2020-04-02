@@ -89,6 +89,9 @@ $ visdom
 # training
 $ bash train.sh
 ```
+|Loss           |
+|------------------------|
+|![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/images/loss.png)  |
 
 #### Testing
 
@@ -111,3 +114,10 @@ $ bash demo_folder.sh
 ```
 ---
 
+## Known issues
+
+- Model trained is Caffe is better in getting the objectness, this way
+it handles some of the cases quite well than the PyTorch model I have
+trained. I tried to debug this issue. You can refer to the discussion
+[here](https://discuss.pytorch.org/t/implementation-of-caffe-code-in-pytorch-suboptimal-solution/73267).
+If someone solves this issue, please open a PR
