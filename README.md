@@ -103,7 +103,10 @@ $ bash demo_foler.sh
 
 ## Tracking Demo
 
-|Car           |  Sunshade |
+|1           |  2 |
 |------------------------|-------------------------|
-|![]()  | ![]() | 
+|![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/1.gif)  | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/2.gif) | 
 
+|3           |  4 |
+|------------------------|-------------------------|
+|![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/3.gif)  | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/2.gif) | 
