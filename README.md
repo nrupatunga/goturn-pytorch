@@ -103,7 +103,7 @@ $ mkdir goturn-pytorch/models
 # using the trained model
 
 $ cd goturn-pytorch/src/scripts
-$ bash demo_foler.sh
+$ bash demo_folder.sh
 
 # To test on a new video, you need to extract the frames from the video
 # using ffmpeg or any other tool and modify folder path in
