@@ -56,6 +56,7 @@ def click_and_crop(event, x, y, flags, param):
         img_dbg = cv2.rectangle(img_dbg, refPt[0], refPt[1], (0, 255, 0), 2)
         # img_dbg = cv2.cvtColor(img_dbg, cv2.COLOR_RGB2BGR)
         cv2.imshow("image", img_dbg)
+        cv2.waitKey(0)
 
 
 cv2.setMouseCallback("image", click_and_crop)
@@ -76,7 +77,10 @@ class loadfromfolder:
 
         vid_dir = self._video_dir
         vid_frames = [str(img_path) for img_path in
-                      Path(vid_dir).glob('*.png')]
+                      Path(vid_dir).glob('*.jpg')]
+        if len(vid_frames) == 0:
+            vid_frames = [str(img_path) for img_path in
+                          Path(vid_dir).glob('*.png')]
         list_of_frames = sorted(vid_frames)
 
         self._vid_frames = [list_of_frames]
@@ -239,7 +243,8 @@ class GoturnTracker:
 
             # curr_dbg = cv2.cvtColor(curr_dbg, cv2.COLOR_RGB2BGR)
             cv2.imshow('image', curr_dbg)
-            cv2.waitKey(1)
+            # cv2.imwrite('{}.png'.format(i), curr_dbg)
+            cv2.waitKey(20)
 
 
 if __name__ == "__main__":

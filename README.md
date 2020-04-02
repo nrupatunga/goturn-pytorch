@@ -74,3 +74,19 @@ $ visdom
 # training
 $ bash train.sh
 ```
+
+**Testing**
+
+In order to test the model, you can use the model in this
+[link](https://drive.google.com/drive/folders/1utL6Eh7CnxPM8_o8p5T72duZkhhG0tru?usp=sharing)
+or you can use your trained model
+
+```
+$ mkdir goturn-pytorch/models
+
+# Copy the extracted caffenet folder into models folder, if you are
+# using the trained model
+
+# To test on a video, you need to extract the frames from the video
+# using ffmpeg or any other tool
+```
