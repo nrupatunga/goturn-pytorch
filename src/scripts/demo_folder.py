@@ -239,11 +239,13 @@ class GoturnTracker:
                         break
 
             curr_dbg = np.copy(curr)
-            curr_dbg = cv2.rectangle(curr_dbg, (int(bbox.x1), int(bbox.y1)), (int(bbox.x2), int(bbox.y2)), (255, 0, 0), 2)
+            curr_dbg = cv2.rectangle(curr_dbg, (int(bbox.x1),
+                                                int(bbox.y1)),
+                                     (int(bbox.x2), int(bbox.y2)), (255, 255, 0), 2)
 
             # curr_dbg = cv2.cvtColor(curr_dbg, cv2.COLOR_RGB2BGR)
             cv2.imshow('image', curr_dbg)
-            # cv2.imwrite('{}.png'.format(i), curr_dbg)
+            # cv2.imwrite('./output/{:04d}.png'.format(i), curr_dbg)
             cv2.waitKey(20)
 
 

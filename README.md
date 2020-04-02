@@ -17,6 +17,11 @@
 
 * [About the Project](#about-the-project)
 * [Getting Started](#getting-started)
+	- [Code Setup](#code-setup)
+	- [Data Download](#data-download)
+	- [Training](#training)
+	- [Testing](#testing)
+* [Tracking-Demo](#tracking-demo)
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
@@ -37,7 +42,7 @@ independently through code.
 <!-- GETTING STARTED -->
 ## Getting Started
 
-**Code Setup**
+#### Code Setup
 ```
 # Clone the repository
 $ git clone https://github.com/nrupatunga/goturn-pytorch
@@ -50,13 +55,13 @@ $ pip install -r requirements.txt
 $ source settings.sh
 ```
 
-**Data Download**
+#### Data Download
 ```
 cd goturn-pytorch/src/scripts
 $ ./download_data.sh /path/to/data/directory
 ```
 
-**Training**
+#### Training
 ```
 $ cd goturn-pytorch/src/scripts
 
@@ -75,7 +80,7 @@ $ visdom
 $ bash train.sh
 ```
 
-**Testing**
+#### Testing
 
 In order to test the model, you can use the model in this
 [link](https://drive.google.com/drive/folders/1utL6Eh7CnxPM8_o8p5T72duZkhhG0tru?usp=sharing)
@@ -87,6 +92,18 @@ $ mkdir goturn-pytorch/models
 # Copy the extracted caffenet folder into models folder, if you are
 # using the trained model
 
-# To test on a video, you need to extract the frames from the video
-# using ffmpeg or any other tool
+$ cd goturn-pytorch/src/scripts
+$ bash demo_foler.sh
+
+# To test on a new video, you need to extract the frames from the video
+# using ffmpeg or any other tool and modify folder path in
+# demo_folder.sh accordingly
 ```
+---
+
+## Tracking Demo
+
+|Car           |  Sunshade |
+|------------------------|-------------------------|
+|![]()  | ![]() | 
+
