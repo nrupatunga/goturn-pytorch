@@ -41,11 +41,11 @@ independently through code.
 
 ## Tracking Demo
 
-|1           |  2 |
+|Face           |  Surfer |
 |------------------------|-------------------------|
 |![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/face.gif)  | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/surfer.gif) |
 
-|3           |  4 |
+|Bike           |  Bear |
 |------------------------|-------------------------|
 |![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/bike.gif)  | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/bear.gif) |
 
