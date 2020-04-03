@@ -353,6 +353,7 @@ def get_args():
 
     # reproducibility
     ap.add_argument('--seed', type=int, default=42, help='seed value')
+    ap.add_argument('--seed', type=int, default=800, help='seed value')
 
     # save path
     ap.add_argument('--save_path', default=".", type=str, help='path to save output')
