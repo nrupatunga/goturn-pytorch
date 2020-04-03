@@ -41,9 +41,9 @@ independently through code.
 
 ## Tracking Demo
 
-|Face           |  Surfer |
-|------------------------|-------------------------|
-|![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/face.gif)  | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/surfer.gif) |
+|Face           |  Surfer | Face |
+|------------------------|-------------------------|-------------------------|
+|![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/face.gif)  | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/surfer.gif) | ![](https://github.com/nrupatunga/goturn-pytorch/blob/master/doc/output/face2.gif)
 
 |Bike           |  Bear |
 |------------------------|-------------------------|
