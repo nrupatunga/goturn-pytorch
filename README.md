@@ -109,6 +109,12 @@ $ mkdir goturn-pytorch/models
 
 $ cd goturn-pytorch/src/scripts
 $ bash demo_folder.sh
+# once you run, select the bounding box on the frame using mouse, 
+# once you select the bounding box press 's' to start tracking, 
+# if the model lose tracking, please press 'p' to pause and mark the
+# bounding box again as before and press 's' again to continue the
+# tracking
+
 
 # To test on a new video, you need to extract the frames from the video
 # using ffmpeg or any other tool and modify folder path in
