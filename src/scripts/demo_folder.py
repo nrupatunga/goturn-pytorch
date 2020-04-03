@@ -102,8 +102,7 @@ class GoturnTracker:
         ckpt_dir = model_dir.joinpath('checkpoints')
         ckpt_path = next(ckpt_dir.glob('*.ckpt'))
 
-        model = GoturnTrain.load_from_metrics(weights_path=ckpt_path,
-                                              tags_csv=model_dir.joinpath('meta_tags.csv'))
+        model = GoturnTrain.load_from_checkpoint(ckpt_path)
         model.eval()
         model.freeze()
 
