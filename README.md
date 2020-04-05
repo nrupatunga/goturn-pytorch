@@ -71,6 +71,18 @@ cd goturn-pytorch/src/scripts
 $ ./download_data.sh /path/to/data/directory
 ```
 
+#### Training on custom dataset
+
+- If you want to use your own custom dataset to train, you might want to
+understand the how current dataloader works. For that you might need a
+smaller dataset to debug, which you can find it
+[here](https://drive.google.com/file/d/1XZa4kpgIwUqmrl9vonQZMIaemSUm5P-4/view?usp=sharing).
+This contains few samples of ImageNet and Alov dataset.
+
+- Once you understand the dataloaders, please
+refer [here](https://github.com/nrupatunga/goturn-pytorch/issues/2#issuecomment-609405851)
+for more information on where to modify training script.
+
 #### Training
 ```
 $ cd goturn-pytorch/src/scripts
