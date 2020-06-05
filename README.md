@@ -38,6 +38,8 @@ independently through code.
 * Built with following frameworks:
 	- [PyTorch-Lightning](https://github.com/PyTorchLightning/pytorch-lightning)
 	- [Visdom](https://github.com/facebookresearch/visdom)
+	
+* Similar to original [implementation](https://github.com/davheld/GOTURN) by the author, you will be able to train the model in a day
 
 ## Tracking Demo
 
