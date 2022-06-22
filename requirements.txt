@@ -6,7 +6,7 @@ pytorch_lightning==0.7.1
 imutils==0.5.3
 torch==1.4.0
 torch_lr_finder==0.1
-numpy==1.15.4
+numpy==1.22.0
 opencv_python==3.4.3.18
 Pillow==7.0.0
 visdom==0.1.8.9
